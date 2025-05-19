@@ -2,10 +2,11 @@ create table Application(
     cip_code  char(6) not null,
     application_id  int not null,
     apply_date  date,
-    status textnot not null CHECK (status IN ('waiting','admitted','rejected')),
+    status text not null CHECK (status IN ('waiting','admitted','rejected')),
+    UNIQUE(cip_code, application_id),
     primary key (cip_code, application_id),
     FOREIGN key (cip_code) references Program(cip_code),
-    FOREIGN key (application_id) references Applicant(user_id)
+    FOREIGN key (application_id) references Applicant(applicant_id)
 );
 
 
