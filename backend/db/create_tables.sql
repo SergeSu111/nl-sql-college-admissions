@@ -1,0 +1,25 @@
+create table Application(
+    cip_code  char(6) not null,
+    application_id  int not null,
+    apply_date  date,
+    status textnot not null CHECK (status IN ('waiting','admitted','rejected')),
+    primary key (cip_code, application_id),
+    FOREIGN key (cip_code) references Program(cip_code),
+    FOREIGN key (application_id) references Applicant(user_id)
+);
+
+
+create table Applicant (
+   applicant_id int primary key,
+   full_name varchar(100) not null,
+   email varchar(100) not null unique
+);
+
+create table Program (
+   cip_code char(6) primary key,
+   iped_unit_id int not null unique,
+   name varchar(100) not null unique,
+   degree_level text not null check (degree_level in ('bachelor','master','doctorate')),
+   tuition_usd DECIMAL(10,2) not null,
+   application_deadline date not null,
+);
