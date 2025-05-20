@@ -18,8 +18,8 @@ create table Applicant (
 
 create table Program (
    cip_code char(6) primary key,
-   iped_unit_id int not null unique,
-   name varchar(100) not null unique,
+   iped_unit_id int not null,
+   name varchar(100) not null,
    degree_level text not null check (degree_level in ('bachelor','master','doctorate')),
    tuition_usd DECIMAL(10,2) not null,
    application_deadline date not null,

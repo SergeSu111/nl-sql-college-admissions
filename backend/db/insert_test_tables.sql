@@ -70,3 +70,6 @@ INSERT INTO Inquiry (inquiry_id, cip_code, message, submit_date) VALUES
   (8,  '30.7101', 'What are the core courses in Data Analytics, General?',                   '2024-07-22 09:05'),
   (9,  '11.0902', 'Is remote learning available for the Cloud Computing program?',            '2024-08-15 12:30'),
   (10, '52.0301', 'Does the Accounting program require a related undergraduate background?', '2024-09-01 14:00');
+
+
+  
