@@ -1,0 +1,71 @@
+/* 不知道这一行是干嘛的 */
+/* * { box-sizing: border-box; margin: 0; padding: 0; }  */
+
+body
+{
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: white;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#chat-container
+{
+    width: 400px;
+    height:600px;
+    height: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* max-height: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; */
+}
+
+#messages
+{
+   flex: 1; 
+   padding: 12px;
+   overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.user { background: #d1e7dd; align-self: flex-end; }
+.bot  { background: #e2e3e5; align-self: flex-start; }
+
+#input-area {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+#input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  resize: none;
+}
+
+#send {
+  width: 60px;
+  border: none;
+  background: #0d6efd;
+  color: white;
+  cursor: pointer;
+}
+
+#send:disabled { background: #6c757d; }
