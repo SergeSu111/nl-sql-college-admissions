@@ -25,6 +25,7 @@ export async function generateSQL(user_question) {
         {role: 'user', content: user_question}
     ];
 
+    
 
     const resp = await ai.chat.completions.create({
         model: 'gpt-4',
