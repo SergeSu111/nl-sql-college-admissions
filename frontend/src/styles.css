@@ -69,3 +69,13 @@ body
 }
 
 #send:disabled { background: #6c757d; }
+
+.message.user {
+  background: #d1e7dd;
+  align-self: flex-end;
+}
+
+.message.bot {
+  background: #e2e3e5;
+  align-self: flex-start;
+}

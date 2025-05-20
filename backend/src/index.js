@@ -30,6 +30,7 @@ const db = knex({
 
 
 const app = express(); // 创建express应用
+app.use(express.static(path.resolve('../frontend/src')));
 app.use(express.json()); // 解析json格式的请求体
 
 // 5⃣ 健康检查 / 测试路由：验证数据库连接是否正常
@@ -54,12 +55,16 @@ app.post('/api/chat', async (req, res) => {
   try {
     // 6.1) 调用 pipeline 生成 SQL
     const sql = await generateSQL(question);
-
+    // 4) 如果它不以 SQL 关键字开头，就把它当成纯文本回答，不执行数据库
+    if (!/^(SELECT|INSERT|UPDATE|DELETE|WITH)\b/i.test(sql)) {
+        return res.json({ answer: sql });
+    }
     // 6.2) 用 Knex.raw 执行 SQL，拿到 rows（结果集）
     const raw = await db.raw(sql);
     // 注意：db.raw 返回的结构可能因 SQLite 驱动略有不同，可根据 raw 里的数据取 rows
 
     // 6.3) 返回给前端：GPT 生成的 SQL + 查询结果
+
     res.json({ sql, rows: raw });
   } catch (err) {
     console.error('Chat error:', err);
